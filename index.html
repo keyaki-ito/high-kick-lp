@@ -745,6 +745,24 @@
     .form-success h3 { font-size: 1.4rem; margin-bottom: 10px; }
     .form-success p { opacity: 0.8; }
 
+    .full-badge {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      padding: 2px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+
+    tr.is-full td { opacity: 0.5; }
+
+    .checkbox-group label.is-full {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     /* ========== FOOTER ========== */
     .footer {
       background: #111827;
@@ -984,22 +1002,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr data-day="day1">
                 <td>第1回：7/21（火）</td>
                 <td>13:00〜14:00（定員12名）</td>
                 <td>前蹴り</td>
               </tr>
-              <tr>
+              <tr data-day="day2">
                 <td>第2回：7/23（木）</td>
                 <td>13:00〜14:00（定員12名）</td>
                 <td>回し蹴り</td>
               </tr>
-              <tr>
+              <tr data-day="day3">
                 <td>第3回：7/28（火）</td>
                 <td>13:00〜14:00（定員12名）</td>
                 <td>横蹴り</td>
               </tr>
-              <tr>
+              <tr data-day="day4">
                 <td>第4回：7/30（木）</td>
                 <td>13:00〜14:00（定員12名）</td>
                 <td>後ろ回し・胴回し</td>
@@ -1119,12 +1137,16 @@
             <label>ご質問・ご要望</label>
             <textarea name="message" placeholder="ご質問やご要望があればお気軽にどうぞ"></textarea>
           </div>
+          <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:10px; padding:16px; margin-top:20px; font-size:0.85rem; line-height:1.7;">
+            <p style="font-weight:700; margin-bottom:6px;"><i class="fas fa-envelope"></i> メールが届かない場合について</p>
+            <p style="opacity:0.85;">お申し込み後、担当者よりメールをお送りしておりますが、迷惑メールフォルダへの振り分けや受信設定により届かない場合がございます。数日経っても返信がない場合は、迷惑メールフォルダをご確認のうえ、<a href="https://lin.ee/vjLJIcK" target="_blank" style="color:var(--red-light); text-decoration:underline; font-weight:700;">公式LINE</a>よりお問い合わせください。</p>
+          </div>
           <button type="submit" class="btn-submit">申し込む</button>
         </form>
         <div class="form-success" id="formSuccess">
           <i class="fas fa-circle-check"></i>
           <h3>お申し込みありがとうございます！</h3>
-          <p>確認メールをお送りしますので、しばらくお待ちください。<br>3営業日以内にご連絡いたします。</p>
+          <p>担当者よりメールにてご連絡いたします。<br>数日経っても届かない場合は、迷惑メールフォルダをご確認のうえ、<br><a href="https://lin.ee/vjLJIcK" target="_blank" style="color:#2ECC71; text-decoration:underline; font-weight:700;">公式LINE</a>よりお問い合わせください。</p>
         </div>
       </div>
     </div>
@@ -1136,10 +1158,54 @@
     <p><strong>夏の空手ハイキック教室</strong></p>
     <p>主催：はりきゅう整骨けやき</p>
     <p>お問い合わせ：<a href="mailto:care-ki@outlook.com">care-ki@outlook.com</a></p>
+    <p style="margin-top:12px;"><a href="https://lin.ee/vjLJIcK" target="_blank" style="color:#06C755; text-decoration:none; font-weight:700;"><i class="fab fa-line" style="font-size:1.2rem; vertical-align:middle; margin-right:4px;"></i>公式LINEでお問い合わせ</a></p>
     <p style="margin-top:16px;">&copy; 2026 夏の空手ハイキック教室 All Rights Reserved.</p>
   </footer>
 
+  <!-- 公式LINE フローティングボタン -->
+  <a href="https://lin.ee/vjLJIcK" target="_blank" style="
+    position:fixed; bottom:24px; right:24px; z-index:999;
+    background:#06C755; color:#fff; width:60px; height:60px;
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:1.8rem; box-shadow:0 4px 15px rgba(0,0,0,0.3);
+    text-decoration:none; transition:transform 0.2s;
+  " aria-label="公式LINEへ" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    <i class="fab fa-line"></i>
+  </a>
+
   <script>
+    // ============================================================
+    // ★★★ 満員設定 ★★★
+    // 定員に達した日を true に変更してください。
+    // 例：day1 が満員なら day1: true にする。
+    // ============================================================
+    const FULL_DAYS = {
+      day1: false,  // 7/21（火）
+      day2: false,  // 7/23（木）
+      day3: false,  // 7/28（火）
+      day4: false,  // 7/30（木）
+    };
+
+    // 満員の日にバッジ追加・チェックボックス無効化
+    Object.entries(FULL_DAYS).forEach(([day, isFull]) => {
+      if (!isFull) return;
+      // スケジュール表に満員バッジ
+      const row = document.querySelector(`tr[data-day="${day}"]`);
+      if (row) {
+        row.classList.add('is-full');
+        row.querySelector('td').insertAdjacentHTML('beforeend', ' <span class="full-badge">満員</span>');
+      }
+      // フォームのチェックボックスを無効化
+      const cb = document.querySelector(`input[name="dates"][value="${day}"]`);
+      if (cb) {
+        cb.disabled = true;
+        cb.checked = false;
+        const lbl = cb.closest('label');
+        lbl.classList.add('is-full');
+        lbl.insertAdjacentHTML('beforeend', ' <span class="full-badge">満員</span>');
+      }
+    });
+
     // ===== Hamburger Menu =====
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
@@ -1188,15 +1254,22 @@
     const form = document.getElementById('applicationForm');
     const formSuccess = document.getElementById('formSuccess');
 
-    // 「全日程に参加」チェック時に他の日程も全てON/OFF
+    // 「全日程に参加」チェック時に他の日程も全てON/OFF（満員日は除外）
     const dateAll = document.getElementById('dateAll');
     const dateBoxes = document.querySelectorAll('input[name="dates"]:not(#dateAll)');
+    // 全日程が満員なら「全日程に参加」も無効化
+    if ([...dateBoxes].every(cb => cb.disabled)) {
+      dateAll.disabled = true;
+      dateAll.closest('label').classList.add('is-full');
+      dateAll.closest('label').insertAdjacentHTML('beforeend', ' <span class="full-badge">満員</span>');
+    }
     dateAll.addEventListener('change', () => {
-      dateBoxes.forEach(cb => cb.checked = dateAll.checked);
+      dateBoxes.forEach(cb => { if (!cb.disabled) cb.checked = dateAll.checked; });
     });
     dateBoxes.forEach(cb => {
       cb.addEventListener('change', () => {
-        dateAll.checked = [...dateBoxes].every(c => c.checked);
+        const available = [...dateBoxes].filter(c => !c.disabled);
+        dateAll.checked = available.length > 0 && available.every(c => c.checked);
       });
     });
 
