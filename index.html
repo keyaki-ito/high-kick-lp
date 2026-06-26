@@ -1340,7 +1340,6 @@
       .then(() => {
         form.style.display = 'none';
         formSuccess.style.display = 'block';
-        window.scrollTo({ top: formSuccess.offsetTop - 100, behavior: 'smooth' });
       })
       .catch(() => {
         alert('送信に失敗しました。時間をおいて再度お試しください。');
