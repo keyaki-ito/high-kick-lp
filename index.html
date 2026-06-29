@@ -647,9 +647,9 @@
     .form-group textarea {
       width: 100%;
       padding: 14px 16px;
-      border: 2px solid rgba(255,255,255,0.2);
+      border: 2px solid rgba(255, 255, 255, 0.2);
       border-radius: 10px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       color: var(--white);
       font-family: 'Noto Sans JP', sans-serif;
       font-size: 1rem;
@@ -658,7 +658,7 @@
 
     .form-group input::placeholder,
     .form-group textarea::placeholder {
-      color: rgba(255,255,255,0.4);
+      color: rgba(255, 255, 255, 0.4);
     }
 
     .form-group input:focus,
@@ -668,9 +668,15 @@
       border-color: var(--red);
     }
 
-    .form-group select option { color: var(--text); background: var(--white); }
+    .form-group select option {
+      color: var(--text);
+      background: var(--white);
+    }
 
-    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
 
     .radio-group {
       display: flex;
@@ -712,7 +718,9 @@
       border-color: #FF6B6B;
     }
 
-    .form-group.has-error .form-error { display: block; }
+    .form-group.has-error .form-error {
+      display: block;
+    }
 
     .btn-submit {
       display: block;
@@ -741,26 +749,30 @@
       padding: 40px;
     }
 
-    .form-success i { font-size: 3rem; color: #2ECC71; margin-bottom: 16px; }
-    .form-success h3 { font-size: 1.4rem; margin-bottom: 10px; }
-    .form-success p { opacity: 0.8; }
+    .form-success i {
+      font-size: 3rem;
+      color: #2ECC71;
+      margin-bottom: 16px;
+    }
 
-    .full-badge {
+    .form-success h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .form-success p {
+      opacity: 0.8;
+    }
+
+    .almost-full-badge {
       display: inline-block;
-      background: var(--red);
+      background: #E67E22;
       color: var(--white);
       padding: 2px 10px;
       border-radius: 4px;
       font-size: 0.75rem;
       font-weight: 700;
       margin-left: 8px;
-    }
-
-    tr.is-full td { opacity: 0.5; }
-
-    .checkbox-group label.is-full {
-      opacity: 0.5;
-      cursor: not-allowed;
     }
 
     /* ========== FOOTER ========== */
@@ -1137,16 +1149,21 @@
             <label>ご質問・ご要望</label>
             <textarea name="message" placeholder="ご質問やご要望があればお気軽にどうぞ"></textarea>
           </div>
-          <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:10px; padding:16px; margin-top:20px; font-size:0.85rem; line-height:1.7;">
+          <div
+            style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:10px; padding:16px; margin-top:20px; font-size:0.85rem; line-height:1.7;">
             <p style="font-weight:700; margin-bottom:6px;"><i class="fas fa-envelope"></i> メールが届かない場合について</p>
-            <p style="opacity:0.85;">お申し込み後、担当者よりメールをお送りしておりますが、迷惑メールフォルダへの振り分けや受信設定により届かない場合がございます。数日経っても返信がない場合は、迷惑メールフォルダをご確認のうえ、<a href="https://lin.ee/vjLJIcK" target="_blank" style="color:var(--red-light); text-decoration:underline; font-weight:700;">公式LINE</a>よりお問い合わせください。</p>
+            <p style="opacity:0.85;">
+              お申し込み後、担当者よりメールをお送りしておりますが、迷惑メールフォルダへの振り分けや受信設定により届かない場合がございます。数日経っても返信がない場合は、迷惑メールフォルダをご確認のうえ、<a
+                href="https://lin.ee/vjLJIcK" target="_blank"
+                style="color:var(--red-light); text-decoration:underline; font-weight:700;">公式LINE</a>よりお問い合わせください。</p>
           </div>
           <button type="submit" class="btn-submit">申し込む</button>
         </form>
         <div class="form-success" id="formSuccess">
           <i class="fas fa-circle-check"></i>
           <h3>お申し込みありがとうございます！</h3>
-          <p>担当者よりメールにてご連絡いたします。<br>数日経っても届かない場合は、迷惑メールフォルダをご確認のうえ、<br><a href="https://lin.ee/vjLJIcK" target="_blank" style="color:#2ECC71; text-decoration:underline; font-weight:700;">公式LINE</a>よりお問い合わせください。</p>
+          <p>担当者よりメールにてご連絡いたします。<br>数日経っても届かない場合は、迷惑メールフォルダをご確認のうえ、<br><a href="https://lin.ee/vjLJIcK" target="_blank"
+              style="color:#2ECC71; text-decoration:underline; font-weight:700;">公式LINE</a>よりお問い合わせください。</p>
         </div>
       </div>
     </div>
@@ -1158,7 +1175,9 @@
     <p><strong>夏の空手ハイキック教室</strong></p>
     <p>主催：はりきゅう整骨けやき</p>
     <p>お問い合わせ：<a href="mailto:care-ki@outlook.com">care-ki@outlook.com</a></p>
-    <p style="margin-top:12px;"><a href="https://lin.ee/vjLJIcK" target="_blank" style="color:#06C755; text-decoration:none; font-weight:700;"><i class="fab fa-line" style="font-size:1.2rem; vertical-align:middle; margin-right:4px;"></i>公式LINEでお問い合わせ</a></p>
+    <p style="margin-top:12px;"><a href="https://lin.ee/vjLJIcK" target="_blank"
+        style="color:#06C755; text-decoration:none; font-weight:700;"><i class="fab fa-line"
+          style="font-size:1.2rem; vertical-align:middle; margin-right:4px;"></i>公式LINEでお問い合わせ</a></p>
     <p style="margin-top:16px;">&copy; 2026 夏の空手ハイキック教室 All Rights Reserved.</p>
   </footer>
 
@@ -1181,28 +1200,22 @@
     // ============================================================
     const FULL_DAYS = {
       day1: false,  // 7/21（火）
-      day2: false,  // 7/23（木）
+      day2: true,  // 7/23（木）
       day3: false,  // 7/28（火）
       day4: false,  // 7/30（木）
     };
 
-    // 満員の日にバッジ追加・チェックボックス無効化
+    // 定員間近の日にバッジ表示（チェックボックスは無効化しない）
     Object.entries(FULL_DAYS).forEach(([day, isFull]) => {
       if (!isFull) return;
-      // スケジュール表に満員バッジ
       const row = document.querySelector(`tr[data-day="${day}"]`);
       if (row) {
-        row.classList.add('is-full');
-        row.querySelector('td').insertAdjacentHTML('beforeend', ' <span class="full-badge">満員</span>');
+        row.querySelector('td').insertAdjacentHTML('beforeend', ' <span class="almost-full-badge">定員間近</span>');
       }
-      // フォームのチェックボックスを無効化
       const cb = document.querySelector(`input[name="dates"][value="${day}"]`);
       if (cb) {
-        cb.disabled = true;
-        cb.checked = false;
         const lbl = cb.closest('label');
-        lbl.classList.add('is-full');
-        lbl.insertAdjacentHTML('beforeend', ' <span class="full-badge">満員</span>');
+        lbl.insertAdjacentHTML('beforeend', ' <span class="almost-full-badge">定員間近</span>');
       }
     });
 
@@ -1254,22 +1267,15 @@
     const form = document.getElementById('applicationForm');
     const formSuccess = document.getElementById('formSuccess');
 
-    // 「全日程に参加」チェック時に他の日程も全てON/OFF（満員日は除外）
+    // 「全日程に参加」チェック時に他の日程も全てON/OFF
     const dateAll = document.getElementById('dateAll');
     const dateBoxes = document.querySelectorAll('input[name="dates"]:not(#dateAll)');
-    // 全日程が満員なら「全日程に参加」も無効化
-    if ([...dateBoxes].every(cb => cb.disabled)) {
-      dateAll.disabled = true;
-      dateAll.closest('label').classList.add('is-full');
-      dateAll.closest('label').insertAdjacentHTML('beforeend', ' <span class="full-badge">満員</span>');
-    }
     dateAll.addEventListener('change', () => {
-      dateBoxes.forEach(cb => { if (!cb.disabled) cb.checked = dateAll.checked; });
+      dateBoxes.forEach(cb => { cb.checked = dateAll.checked; });
     });
     dateBoxes.forEach(cb => {
       cb.addEventListener('change', () => {
-        const available = [...dateBoxes].filter(c => !c.disabled);
-        dateAll.checked = available.length > 0 && available.every(c => c.checked);
+        dateAll.checked = [...dateBoxes].every(c => c.checked);
       });
     });
 
@@ -1337,15 +1343,15 @@
         method: 'POST',
         body: JSON.stringify(payload)
       })
-      .then(() => {
-        form.style.display = 'none';
-        formSuccess.style.display = 'block';
-      })
-      .catch(() => {
-        alert('送信に失敗しました。時間をおいて再度お試しください。');
-        submitBtn.disabled = false;
-        submitBtn.textContent = '申し込む';
-      });
+        .then(() => {
+          form.style.display = 'none';
+          formSuccess.style.display = 'block';
+        })
+        .catch(() => {
+          alert('送信に失敗しました。時間をおいて再度お試しください。');
+          submitBtn.disabled = false;
+          submitBtn.textContent = '申し込む';
+        });
     });
 
     // ===== Scroll Fade In (Intersection Observer) =====
